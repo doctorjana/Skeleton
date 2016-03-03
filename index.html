@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first Three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
+        <script src="OBJLoader.js"></script>
+        <script src="ctm.js"></script>
+        <script src="CTMLoader.js"></script>
+        <script src="lzma.js"></script>
+        <script src="OrbitControls.js"></script>
+		<script>
+var container;
+
+			var camera, scene, renderer;
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+
+
+			init();
+			animate();
+
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 1000;
+                
+	            var controls	= new THREE.OrbitControls(camera)
+
+				// scene
+
+				scene = new THREE.Scene();
+
+				var ambient = new THREE.AmbientLight( 0x101030 );
+				scene.add( ambient );
+
+				var directionalLight = new THREE.DirectionalLight( 0xCABA7B );
+				directionalLight.position.set( 0, 0, .1 );
+				scene.add( directionalLight );
+
+				var directionalLight = new THREE.DirectionalLight( 0xCABA7B );
+				directionalLight.position.set( 0, 0, -1 );
+				scene.add( directionalLight );   
+                
+
+                var dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+                dirLight.position.set(100, 100, 50);
+                scene.add(dirLight);
+
+
+var loader = new THREE.CTMLoader();
+
+loader.load( 'skeleton.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+        mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+}, {} );
+
+				//
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+
+
+			//
+
+			function animate() {
+				requestAnimationFrame( animate );
+				render();
+
+			}
+
+			function render() {
+                
+				camera.lookAt( scene.position );
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>
