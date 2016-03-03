@@ -108,7 +108,67 @@ loader.load( 'skeleton.ctm',  function( geometry, material ){
 				renderer.render( scene, camera );
 
 			}
+function touchstart( event ) {
+    if ( ! _this.enabled ) return;
 
+        switch ( event.touches.length ) {
+            case 1:
+                _state = STATE.TOUCH_ROTATE;
+                _rotateStart = _rotateEnd = _this.getMouseProjectionOnBall( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+                break;
+            case 2:
+                _state = STATE.TOUCH_ZOOM;
+                var p1 = new THREE.Vector2(event.touches[0].pageX, event.touches[0].pageY);
+                var p2 = new THREE.Vector2(event.touches[1].pageX, event.touches[1].pageY);
+                _touchZoomDistanceCurrent = _touchZoomDistancePrevious = p1.distanceTo(p2);
+                break;
+            case 3:
+                _state = STATE.TOUCH_PAN;
+                _panStart = _panEnd = _this.getMouseOnScreen(event.touches[0].pageX, event.touches[0].pageY);
+                break;
+            default:
+                _state = STATE.NONE;
+    }
+}
+
+function touchmove( event ) {
+    if ( ! _this.enabled ) return;
+    event.preventDefault();
+    event.stopPropagation();
+        switch ( event.touches.length ) {
+        case 1:
+            _rotateEnd = _this.getMouseProjectionOnBall( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+            break;
+        case 2:
+            var p1 = new THREE.Vector2(event.touches[0].pageX, event.touches[0].pageY);
+            var p2 = new THREE.Vector2(event.touches[1].pageX, event.touches[1].pageY);
+            _touchZoomDistanceCurrent = p1.distanceTo(p2);
+            break;
+        case 3:
+            _panEnd = _this.getMouseOnScreen(event.touches[0].pageX, event.touches[0].pageY);
+            break;
+        default:
+            _state = STATE.NONE;
+    }
+}
+
+this.zoomCamera = function () {
+    if (_state === STATE.TOUCH_ZOOM) {
+        var factor = _touchZoomDistancePrevious / _touchZoomDistanceCurrent;
+        _touchZoomDistancePrevious = _touchZoomDistanceCurrent;
+        _eye.multiplyScalar(factor);
+    } else {
+        var factor = 1.0 + (_zoomEnd.y - _zoomStart.y) * _this.zoomSpeed;
+        if (factor !== 1.0 && factor > 0.0) {
+            _eye.multiplyScalar(factor);
+            if (_this.staticMoving) {
+                _zoomStart.copy(_zoomEnd);
+            } else {
+                _zoomStart.y += (_zoomEnd.y - _zoomStart.y) * this.dynamicDampingFactor;
+            }
+        }
+    }
+};
 		</script>
 	</body>
 </html>
