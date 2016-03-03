@@ -63,12 +63,21 @@ function init() {
 
 
     var loader = new THREE.CTMLoader();
-
-    loader.load( 'skeleton.ctm',  function( geometry, material ){
+    loader.load( 'ctm/Skull.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
+        mesh.name = "skull";
+    }, {} );
+    
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/Sternum.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "sternum";
     }, {} );
 
     //
@@ -138,24 +147,26 @@ function update()
 			if ( INTERSECTED ) 
                 
 				INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-			// store reference to closest object as current intersection object
-			INTERSECTED = intersects[ 0 ].object;
-			// store color of closest object (for later restoration)
-			INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-			// set a new color for closest object
-			INTERSECTED.material.color.setHex( 0xffff00 );
-		}
-	} 
-	else // there are no intersections
-	{
-		// restore previous intersection object (if it exists) to its original color
-		if ( INTERSECTED ) 
-			INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-		// remove previous intersection object reference
-		//     by setting current intersection object to "nothing"
-		INTERSECTED = null;
-       
-	}
+			     // store reference to closest object as current intersection object
+                INTERSECTED = intersects[ 0 ].object;
+                // store color of closest object (for later restoration)
+                INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+                // set a new color for closest object
+                INTERSECTED.material.color.setHex( 0xffff00 );
+                
+                console.log(INTERSECTED.name);
+            }
+        } 
+        else // there are no intersections
+        {
+            // restore previous intersection object (if it exists) to its original color
+            if ( INTERSECTED ) 
+                INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+            // remove previous intersection object reference
+            //     by setting current intersection object to "nothing"
+            INTERSECTED = null;
+
+        }
 
 }
 
