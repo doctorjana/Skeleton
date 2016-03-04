@@ -30,8 +30,7 @@ body {
     }
 </style>
     <div class="information">
-        <h1 id="heading">HEADING</h1> 
-        <!---add hide me button-->
+        <h1 id="heading">HEADING</h1>
         <div id="description">Bonbon lollipop marzipan sweet chocolate. Oat cake lollipop cake lemon drops marshmallow sweet roll. Sweet roll sweet roll marshmallow danish jujubes croissant. Fruitcake soufflé brownie fruitcake. Wafer cake fruitcake gummi bears cotton candy. Tiramisu lemon drops cheesecake cupcake marshmallow tart bonbon ice cream oat cake. Sweet roll dessert sweet roll donut candy canes. Wafer tiramisu fruitcake toffee. Pie gummi bears muffin cake cookie soufflé sugar plum fruitcake cheesecake. Cupcake chocolate bar cookie topping. Lemon drops cake gingerbread candy canes toffee pudding gummies. Pastry gummi bears tiramisu bonbon. Liquorice jelly beans bonbon danish wafer biscuit croissant.</div>
     </div>
     
@@ -46,7 +45,10 @@ body {
 
 <script type="text/javascript">
 var camera, scene, renderer;
-
+// custom global variables
+var cube;
+var projector, mouse = { x: 0, y: 0 }, INTERSECTED;
+    
 var mesh;
 var mesh_scale = 0.999;
 var controls;
@@ -99,37 +101,68 @@ function init() {
 
 //skybox
 
-var urlPrefix = "img/";
-var urls = [ urlPrefix + "starfield_lf.jpg", urlPrefix + "starfield_rt.jpg",
-    urlPrefix + "starfield_up.jpg", urlPrefix + "starfield_dn.jpg",
-    urlPrefix + "starfield_ft.jpg", urlPrefix + "starfield_bk.jpg" ];
-var textureCube = THREE.ImageUtils.loadTextureCube( urls , undefined, function () {;
 
-    var shader = THREE.ShaderLib["cube"];
-    var uniforms = THREE.UniformsUtils.clone( shader.uniforms );
-    shader.uniforms['tCube'].value = textureCube;   // textureCube has been init before
-    var material = new THREE.ShaderMaterial({
-                                            fragmentShader    : shader.fragmentShader,
-                                            vertexShader  : shader.vertexShader,
-                                            uniforms  : shader.uniforms,
-                                            depthWrite : false,
-                                            side: THREE.BackSide,
-                                        });
-    var geometry = new THREE.BoxGeometry(5000, 5000, 5000)
-    var skybox = new THREE.Mesh(geometry, material)
-    scene.add(skybox)
- });
+    texture_placeholder = document.createElement( 'canvas' );
+    texture_placeholder.width = 128;
+    texture_placeholder.height = 128;
+    var context = texture_placeholder.getContext( '2d' );
+    context.fillStyle = 'rgb( 200, 200, 200 )';
+    context.fillRect( 0, 0, texture_placeholder.width, texture_placeholder.height );   
+    var materials = [
+        loadTexture( 'img/starfield_rt.jpg' ), // right
+        loadTexture( 'img/starfield_lf.jpg' ), // left
+        loadTexture( 'img/starfield_up.jpg' ), // top
+        loadTexture( 'img/starfield_dn.jpg' ), // bottom
+        loadTexture( 'img/starfield_bk.jpg' ), // back
+        loadTexture( 'img/starfield_ft.jpg' )  // front
+    ];
+    mesh = new THREE.Mesh( new THREE.BoxGeometry(3000, 3000, 3000, 7, 7, 7 ), new THREE.MultiMaterial( materials ) );
+    mesh.scale.x = - 1;
+    scene.add( mesh );    
 
+
+function loadTexture( path ) {
+    var texture = new THREE.Texture( texture_placeholder );
+    var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+    var image = new Image();
+    image.onload = function () {
+        texture.image = this;
+        texture.needsUpdate = true;
+    };
+    image.src = path;
+    return material;
+}
+    
+    
+    
 //load models
     var loader = new THREE.CTMLoader();
-    loader.load( 'skeleton.ctm',  function( geometry, material ){
+    loader.load( 'ctm/skull.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
-        mesh.name = "skull";
+        mesh.name = "Skull";
     }, {} );
 
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/mandible.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Mandible";
+    }, {} );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 //controls
     controls = new THREE.TrackballControls(camera, renderer.domElement);
     controls.rotateSpeed = 0.4;
@@ -137,13 +170,24 @@ var textureCube = THREE.ImageUtils.loadTextureCube( urls , undefined, function (
     controls.noPan = false;
     controls.staticMoving = false;
     controls.minDistance = 50;
-    controls.maxDistance = 2000;
+    controls.maxDistance = 1000;
     controls.dynamicDampingFactor = 0.2;
 
     
 
     window.addEventListener('resize', onWindowResize, false);
 }
+    
+function onDocumentMouseMove( event ) 
+{
+	// the following line would stop any other event handler from firing
+	// (such as the mouse's TrackballControls)
+	// event.preventDefault();
+	
+	// update the mouse variable
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+}    
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -152,8 +196,59 @@ function onWindowResize() {
 }
 
 function animate() {
+    // find intersections
+
+	// create a Ray with origin at the mouse position
+	//   and direction into the scene (camera direction)
+	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+	vector.unproject( camera );
+	var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+
+	// create an array containing all objects in the scene with which the ray intersects
+	var intersects = ray.intersectObjects( scene.children );
+
+	// INTERSECTED = the object in the scene currently closest to the camera 
+	//		and intersected by the Ray projected from the mouse position 	
+	
+	// if there is one (or more) intersections
+	if ( intersects.length > 0 )
+	{
+		// if the closest object intersected is not the currently stored intersection object
+		if ( intersects[ 0 ].object != INTERSECTED ) 
+		{
+            
+		    // restore previous intersection object (if it exists) to its original color
+			if ( INTERSECTED ) 
+                
+				INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+			     // store reference to closest object as current intersection object
+                INTERSECTED = intersects[ 0 ].object;
+                // store color of closest object (for later restoration)
+                INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+                // set a new color for closest object
+                INTERSECTED.material.color.setHex( 0xf44336 );
+                
+                console.log(INTERSECTED.name);
+                
+                //replace
+                document.getElementById("heading").innerHTML= INTERSECTED.name;
+                document.getElementById("description").innerHTML= INTERSECTED.name;
+                
+            }
+        } 
+        else // there are no intersections
+        {
+            // restore previous intersection object (if it exists) to its original color
+            if ( INTERSECTED ) 
+                INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
+            // remove previous intersection object reference
+            //     by setting current intersection object to "nothing"
+            INTERSECTED = null;
+
+        }
     requestAnimationFrame(animate);
     controls.update();
+	camera.lookAt( scene.position );
     renderer.render(scene, camera);
 }
 </script>

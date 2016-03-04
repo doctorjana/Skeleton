@@ -2,59 +2,50 @@
 <html>
 	<head>
 		<meta charset=utf-8>
-		<title>Human Skeleton in 3d</title>
-        
+<meta name="3d Skeleton" content="https://docjana.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
-            .mytext{
-                position:fixed;
-                color:#fff;
-                font-family:Roboto;
-                padding: 10px;
-            }
-            .heading{
-                font-size: 30px;
-                text-align: center;
-                text-transform: uppercase;
-                font-weight: bold;
-            }
-            .desc{
-                font-size: 20px;
-                text-align: justify;
-                overflow: auto             
-            }
-            @media all and (orientation: landscape){
-                .mytext{width: 40%}
-                .heading{color: #ffeb3b}
-                .desc{top: 20%; height: 60%; left: 2%; background-color: #424242;}
-            }
-            @media all and (orientation: portrait){
-                .mytext{width: 96%}
-                .heading{bottom: 0px; color: white; background-color: #ffeb3b;}
-                .desc{height: 45%; bottom: 56px}
-            }
-		</style>
-        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-	</head>
-	<body>
-        <div id="heading" class="mytext heading">Hello Friends</div>
-        
-        <div class="mytext desc" id="description">Halvah cookie oat cake bonbon jelly oat cake bear claw marshmallow brownie. Tiramisu muffin carrot cake pudding sesame snaps gummi bears halvah. Danish dragée biscuit ice cream dessert. Tootsie roll cotton candy marshmallow tootsie roll chupa chups lollipop gummi bears. Tiramisu jelly-o sweet chocolate marshmallow dessert. Dragée wafer ice cream. Tart gummi bears jelly-o danish lollipop fruitcake. Liquorice muffin donut chupa chups soufflé macaroon halvah pie. Cotton candy cookie lemon drops chocolate cake dragée halvah. Brownie danish topping sesame snaps lollipop lemon drops muffin pie jelly beans. Topping chocolate dessert pie cheesecake. Tart carrot cake tiramisu toffee pudding pastry chupa chups. Marshmallow cookie dragée donut pudding danish cheesecake gummi bears oat cake. Cake tiramisu sugar plum jelly.</div>
-        
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body {
+    background-color: #000;
+    font-family: 'Roboto',sans-serif;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    color: #fff;
+    text-align: justify;
+}
+    .information{
+        position: absolute;
+        left: 0;
+        width: 30%;
+        height: 80%;
+        padding: 5px;
+        overflow-y: auto;
+    }
+    
+    @media all and (orientation:portrait){
+        .information{bottom:0; width:99%; height: 60%}
+    }
+</style>
+
         
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
         <script src="OBJLoader.js"></script>
         <script src="ctm.js"></script>
         <script src="CTMLoader.js"></script>
         <script src="lzma.js"></script>
-        <script src="OrbitControls.js"></script>
+        <script type="text/javascript" src="TrackballControls.js"></script>
         <script src="Projector.js"></script>
-
+    </head>
+    <body>
+            <div class="information">
+        <h1 id="heading">HEADING</h1>
+        <div id="description">Bonbon lollipop marzipan sweet chocolate. Oat cake lollipop cake lemon drops marshmallow sweet roll. Sweet roll sweet roll marshmallow danish jujubes croissant. Fruitcake soufflé brownie fruitcake. Wafer cake fruitcake gummi bears cotton candy. Tiramisu lemon drops cheesecake cupcake marshmallow tart bonbon ice cream oat cake. Sweet roll dessert sweet roll donut candy canes. Wafer tiramisu fruitcake toffee. Pie gummi bears muffin cake cookie soufflé sugar plum fruitcake cheesecake. Cupcake chocolate bar cookie topping. Lemon drops cake gingerbread candy canes toffee pudding gummies. Pastry gummi bears tiramisu bonbon. Liquorice jelly beans bonbon danish wafer biscuit croissant.</div>
+    </div>
 <script>
 var container;
-
+var controls;
 var camera, scene, renderer;
 
 
@@ -62,8 +53,13 @@ var camera, scene, renderer;
 var cube;
 var projector, mouse = { x: 0, y: 0 }, INTERSECTED;
 
-init();
-animate();
+document.addEventListener("DOMContentLoaded", start_app, false);
+
+function start_app() {
+    init();
+    animate();
+}
+
 
 
 function init() {
@@ -74,7 +70,7 @@ function init() {
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100000 );
     camera.position.z = 1000;
 
-    var controls	= new THREE.OrbitControls(camera)
+    
 
     // scene
 
@@ -107,12 +103,12 @@ function init() {
     }, {} );
     
     var loader = new THREE.CTMLoader();
-    loader.load( 'ctm/Sternum.ctm',  function( geometry, material ){
+    loader.load( 'ctm/Mandible.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
-        mesh.name = "sternum";
+        mesh.name = "Mandible";
     }, {} );
 
     //
@@ -121,15 +117,58 @@ function init() {
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
+//controls
+        controls = new THREE.TrackballControls(camera, renderer.domElement);
+    controls.rotateSpeed = 0.4;
+    controls.noZoom = false;
+    controls.noPan = false;
+    controls.staticMoving = false;
+    controls.minDistance = 50;
+    controls.maxDistance = 1000;
+    controls.dynamicDampingFactor = 0.2;
+
+    
+//skybox
 
 
-    //
+    texture_placeholder = document.createElement( 'canvas' );
+    texture_placeholder.width = 128;
+    texture_placeholder.height = 128;
+    var context = texture_placeholder.getContext( '2d' );
+    context.fillStyle = 'rgb( 200, 200, 200 )';
+    context.fillRect( 0, 0, texture_placeholder.width, texture_placeholder.height );   
+    var materials = [
+        loadTexture( 'img/starfield_rt.jpg' ), // right
+        loadTexture( 'img/starfield_lf.jpg' ), // left
+        loadTexture( 'img/starfield_up.jpg' ), // top
+        loadTexture( 'img/starfield_dn.jpg' ), // bottom
+        loadTexture( 'img/starfield_bk.jpg' ), // back
+        loadTexture( 'img/starfield_ft.jpg' )  // front
+    ];
+    mesh = new THREE.Mesh( new THREE.BoxGeometry(3000, 3000, 3000, 7, 7, 7 ), new THREE.MultiMaterial( materials ) );
+    mesh.scale.x = - 1;
+    scene.add( mesh );    
+
+
+function loadTexture( path ) {
+    var texture = new THREE.Texture( texture_placeholder );
+    var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+    var image = new Image();
+    image.onload = function () {
+        texture.image = this;
+        texture.needsUpdate = true;
+    };
+    image.src = path;
+    return material;
+}    
 
     window.addEventListener( 'resize', onWindowResize, false );
 	
     // initialize object to perform world/screen calculations
 	projector = new THREE.Projector();
-	
+
+    
+    
 	// when the mouse moves, call the given function
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 }
@@ -213,6 +252,7 @@ function update()
 
 function animate() {
     requestAnimationFrame( animate );
+    controls.update();
     render();
     update();
 }
