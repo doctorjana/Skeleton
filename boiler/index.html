@@ -4,31 +4,41 @@
 <title>3d Skeleton</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="3d Skeleton" content="https://docjana.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <style type="text/css">
 body {
     background-color: #000;
-    font-family: courier;
+    font-family: 'Roboto',sans-serif;
     margin: 0;
     overflow: hidden;
-}
-#title {
-    position: absolute;
-    left: 0px;
     width: 100%;
-    top: 8px;
-    text-align: center;
-    z-index: 10;
-    font-size: 1.5em;
-    color: #0f0;
-    pointer-events:none;
+    color: #fff;
+    text-align: justify;
 }
+    .information{
+        position: absolute;
+        left: 0;
+        width: 30%;
+        height: 80%;
+        padding: 5px;
+        overflow-y: auto;
+    }
+    
+    @media all and (orientation:portrait){
+        .information{bottom:0; width:99%; height: 60%}
+    }
 </style>
+    <div class="information">
+        <h1 id="heading">HEADING</h1>
+        <div id="description">Bonbon lollipop marzipan sweet chocolate. Oat cake lollipop cake lemon drops marshmallow sweet roll. Sweet roll sweet roll marshmallow danish jujubes croissant. Fruitcake soufflé brownie fruitcake. Wafer cake fruitcake gummi bears cotton candy. Tiramisu lemon drops cheesecake cupcake marshmallow tart bonbon ice cream oat cake. Sweet roll dessert sweet roll donut candy canes. Wafer tiramisu fruitcake toffee. Pie gummi bears muffin cake cookie soufflé sugar plum fruitcake cheesecake. Cupcake chocolate bar cookie topping. Lemon drops cake gingerbread candy canes toffee pudding gummies. Pastry gummi bears tiramisu bonbon. Liquorice jelly beans bonbon danish wafer biscuit croissant.</div>
+    </div>
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
 
 <script type="text/javascript" src="js/Detector.js"></script>
 <script type="text/javascript" src="js/TrackballControls.js"></script>
-<script type="text/javascript" src="js/dat.gui.min.js"></script>
-        <script src="ctm.js"></script>
+       <script src="ctm.js"></script>
         <script src="CTMLoader.js"></script>
         <script src="lzma.js"></script>
 
@@ -86,6 +96,29 @@ function init() {
     dirLight.position.set(100, 100, 50);
     scene.add(dirLight);
 
+//skybox
+
+var urlPrefix = "img/";
+var urls = [ urlPrefix + "starfield_lf.jpg", urlPrefix + "starfield_rt.jpg",
+    urlPrefix + "starfield_up.jpg", urlPrefix + "starfield_dn.jpg",
+    urlPrefix + "starfield_ft.jpg", urlPrefix + "starfield_bk.jpg" ];
+var textureCube = THREE.ImageUtils.loadTextureCube( urls , undefined, function () {;
+
+    var shader = THREE.ShaderLib["cube"];
+    var uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+    shader.uniforms['tCube'].value = textureCube;   // textureCube has been init before
+    var material = new THREE.ShaderMaterial({
+                                            fragmentShader    : shader.fragmentShader,
+                                            vertexShader  : shader.vertexShader,
+                                            uniforms  : shader.uniforms,
+                                            depthWrite : false,
+                                            side: THREE.BackSide,
+                                        });
+    var geometry = new THREE.BoxGeometry(5000, 5000, 5000)
+    var skybox = new THREE.Mesh(geometry, material)
+    scene.add(skybox)
+ });
+
 //load models
     var loader = new THREE.CTMLoader();
     loader.load( 'skeleton.ctm',  function( geometry, material ){
@@ -105,19 +138,7 @@ function init() {
     controls.minDistance = 50;
     controls.maxDistance = 2000;
     controls.dynamicDampingFactor = 0.2;
-//GUI
-                var gui = new dat.GUI();
-            gui.add(this, 'auto_spin', true).name("Welcome to Interactive Skeleton 3d");
-            gui.add(this, 'spin_speed', -1.2, 1.2).name("Spin Speed");
-            gui.add(this, 'translucent', true).name("Translucent").onChange(function (value) {
-                if (value)
-                    mesh.material.opacity = 0.5;
-                else
-                    mesh.material.opacity = 1.0;
-            });
-            gui.addColor(this, 'color').name("Object Color").onChange(function (value) {
-                mesh.material.color.setHex(value);
-            });
+
     
 
     window.addEventListener('resize', onWindowResize, false);
@@ -130,17 +151,9 @@ function onWindowResize() {
 }
 
 function animate() {
-
-
     requestAnimationFrame(animate);
-
-
     controls.update();
-
     renderer.render(scene, camera);
-
-
-
 }
 </script>
 </head>
