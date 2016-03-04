@@ -6,9 +6,31 @@
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
+            .mytext{
+                position:fixed;
+                width:40%;
+                color:#fff;
+                font-family:Roboto
+            }
+            .heading{
+                height: 30px;
+                font-size: 30px;
+                padding: 5px;
+            }
+            .desc{
+                top: 35px;
+                font-size: 20px;
+                text-align: justify;
+            }
 		</style>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
+        <div id="heading" class="mytext heading">Hello Friends</div>
+        
+        <div class="mytext desc" id="description">Halvah cookie oat cake bonbon jelly oat cake bear claw marshmallow brownie. Tiramisu muffin carrot cake pudding sesame snaps gummi bears halvah. Danish dragée biscuit ice cream dessert. Tootsie roll cotton candy marshmallow tootsie roll chupa chups lollipop gummi bears. Tiramisu jelly-o sweet chocolate marshmallow dessert. Dragée wafer ice cream. Tart gummi bears jelly-o danish lollipop fruitcake. Liquorice muffin donut chupa chups soufflé macaroon halvah pie. Cotton candy cookie lemon drops chocolate cake dragée halvah. Brownie danish topping sesame snaps lollipop lemon drops muffin pie jelly beans. Topping chocolate dessert pie cheesecake. Tart carrot cake tiramisu toffee pudding pastry chupa chups. Marshmallow cookie dragée donut pudding danish cheesecake gummi bears oat cake. Cake tiramisu sugar plum jelly.</div>
+        
+        
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
         <script src="OBJLoader.js"></script>
         <script src="ctm.js"></script>
@@ -16,12 +38,12 @@
         <script src="lzma.js"></script>
         <script src="OrbitControls.js"></script>
         <script src="Projector.js"></script>
+
 <script>
 var container;
 
 var camera, scene, renderer;
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
+
 
 // custom global variables
 var cube;
@@ -82,7 +104,7 @@ function init() {
 
     //
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
@@ -110,8 +132,7 @@ function onDocumentMouseMove( event )
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 }
 function onWindowResize() {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
+
 
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -181,9 +202,12 @@ function animate() {
 function render() {
 
     camera.lookAt( scene.position );
+    renderer.setClearColor( 0x000000, 1);
     renderer.render( scene, camera );
 
 }
+
+
 
 		</script>
 	</body>
