@@ -8,19 +8,30 @@
 			canvas { width: 100%; height: 100% }
             .mytext{
                 position:fixed;
-                width:40%;
                 color:#fff;
-                font-family:Roboto
+                font-family:Roboto;
+                padding: 2%;
             }
             .heading{
-                height: 30px;
                 font-size: 30px;
-                padding: 5px;
+                text-align: center;
+                text-transform: uppercase;
+                color: #ffeb3b;
             }
             .desc{
-                top: 35px;
                 font-size: 20px;
                 text-align: justify;
+                overflow: auto;
+                background-color: #424242;
+            }
+            @media all and (orientation: landscape){
+                .mytext{width: 40%}
+                .desc{top: 20%; height: 60%}
+            }
+            @media all and (orientation: portrait){
+                .mytext{width: 96%}
+                .heading{bottom: 0px;}
+                .desc{height: 45%; bottom: 40px}
             }
 		</style>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -202,7 +213,7 @@ function animate() {
 function render() {
 
     camera.lookAt( scene.position );
-    renderer.setClearColor( 0x000000, 1);
+    renderer.setClearColor( 0x212121, 1);
     renderer.render( scene, camera );
 
 }
