@@ -16,22 +16,22 @@
                 font-size: 30px;
                 text-align: center;
                 text-transform: uppercase;
-                color: #ffeb3b;
+                font-weight: bold;
             }
             .desc{
                 font-size: 20px;
                 text-align: justify;
-                overflow: auto;
-                background-color: #424242;
+                overflow: auto             
             }
             @media all and (orientation: landscape){
                 .mytext{width: 40%}
-                .desc{top: 20%; height: 60%}
+                .heading{color: #ffeb3b}
+                .desc{top: 20%; height: 60%; left: 2%; background-color: #424242;}
             }
             @media all and (orientation: portrait){
                 .mytext{width: 96%}
-                .heading{bottom: 0px;}
-                .desc{height: 45%; bottom: 40px}
+                .heading{bottom: 0px; color: white; background-color: #ffeb3b}
+                .desc{height: 45%; bottom: 15%}
             }
 		</style>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
