@@ -444,10 +444,77 @@ function init() {
         mesh.name = "6th to 10th Ribs";
     }, {} ); 
     
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Left_Clavicle.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Left Clavicle";
+    }, {} ); 
+
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Left_Humerus.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Left Humerus";
+    }, {} ); 
+
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Left_Radius.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Left Radius";
+    }, {} );     
     
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Left_Ulna.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Left Radius";
+    }, {} );       
     
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Right_Clavicle.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Clavicle";
+    }, {} ); 
+
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Right_Humerus.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Humerus";
+    }, {} ); 
+
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Right_Radius.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Radius";
+    }, {} );     
     
-    
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Right_Ulna.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Radius";
+    }, {} );     
     
     
     
