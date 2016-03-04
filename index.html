@@ -10,7 +10,7 @@
                 position:fixed;
                 color:#fff;
                 font-family:Roboto;
-                padding: 2%;
+                padding: 10px;
             }
             .heading{
                 font-size: 30px;
@@ -31,7 +31,7 @@
             @media all and (orientation: portrait){
                 .mytext{width: 96%}
                 .heading{bottom: 0px; color: white; background-color: #ffeb3b}
-                .desc{height: 45%; bottom: 15%}
+                .desc{height: 45%; bottom: 56px}
             }
 		</style>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -187,6 +187,11 @@ function update()
                 INTERSECTED.material.color.setHex( 0xffff00 );
                 
                 console.log(INTERSECTED.name);
+                
+                //replace
+                document.getElementById("heading").innerHTML= INTERSECTED.name;
+                document.getElementById("description").innerHTML= INTERSECTED.name;
+                
             }
         } 
         else // there are no intersections
