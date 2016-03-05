@@ -28,7 +28,7 @@ body {
         .information{bottom:0; width:99%; height: 60%}
     }
 </style>
-
+        <script src="view-source:http://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
         
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
         <script src="OBJLoader.js"></script>
@@ -37,6 +37,8 @@ body {
         <script src="lzma.js"></script>
         <script type="text/javascript" src="TrackballControls.js"></script>
         <script src="Projector.js"></script>
+
+        
     </head>
     <body>
             <div class="information">
@@ -50,9 +52,11 @@ var camera, scene, renderer;
 
 
 // custom global variables
-var cube;
+
 var projector, mouse = { x: 0, y: 0 }, INTERSECTED;
 
+
+    
 document.addEventListener("DOMContentLoaded", start_app, false);
 
 function start_app() {
@@ -60,7 +64,14 @@ function start_app() {
     animate();
 }
 
-
+function centroidCalculator(geometry){
+        var centroid = new THREE.Vector3();
+        geometry.computeBoundingBox();
+        centroid.addVectors( geometry.boundingBox.min, geometry.boundingBox.max );
+        centroid.multiplyScalar( 0.5 );
+        centroid.applyMatrix4( mesh.matrixWorld );
+        return centroid;
+}
 
 function init() {
 
@@ -76,6 +87,19 @@ function init() {
 
     scene = new THREE.Scene();
 
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     var ambient = new THREE.AmbientLight( 0x101030 );
     scene.add( ambient );
 
@@ -95,12 +119,14 @@ function init() {
 
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/Skull.ctm',  function( geometry, material ){
+       
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
-        mesh.name = "skull";
-    }, {} );
+        mesh.name = "Skull";
+    mesh.userData =centroidCalculator(geometry);
+    },{});
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/Mandible.ctm',  function( geometry, material ){
@@ -109,7 +135,8 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Mandible";
-    }, {} );
+    mesh.userData = centroidCalculator(geometry); 
+    },{});
 
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/Sacrum.ctm',  function( geometry, material ){
@@ -118,7 +145,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Sacrum";
-    }, {} );
+        mesh.userData = centroidCalculator(geometry);      },{});
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C1.ctm',  function( geometry, material ){
@@ -127,7 +154,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Atlas Vertebra";
-    }, {} );
+        mesh.userData = centroidCalculator(geometry);      },{});
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C2.ctm',  function( geometry, material ){
@@ -136,7 +163,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Axis";
-    }, {} );
+        mesh.userData = centroidCalculator(geometry);      },{});
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C3.ctm',  function( geometry, material ){
@@ -145,7 +172,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "C3 Vertebra";
-    }, {} );    
+        mesh.userData = centroidCalculator(geometry);      },{});    
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C4.ctm',  function( geometry, material ){
@@ -154,7 +181,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "C4 Vertebra";
-    }, {} );        
+        mesh.userData = centroidCalculator(geometry);      },{});        
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C5.ctm',  function( geometry, material ){
@@ -163,7 +190,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "C5 Vertebra";
-    }, {} );        
+        mesh.userData = centroidCalculator(geometry);      },{});        
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C6.ctm',  function( geometry, material ){
@@ -172,7 +199,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "C6 Vertebra";
-    }, {} );        
+        mesh.userData = centroidCalculator(geometry);      },{});        
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/C7.ctm',  function( geometry, material ){
@@ -181,7 +208,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "C7 Vertebra";
-    }, {} );     
+        mesh.userData = centroidCalculator(geometry);      },{});     
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/L1.ctm',  function( geometry, material ){
@@ -190,7 +217,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "L1 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/L2.ctm',  function( geometry, material ){
@@ -199,7 +226,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "L2 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/L3.ctm',  function( geometry, material ){
@@ -208,7 +235,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "L3 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/L4.ctm',  function( geometry, material ){
@@ -217,7 +244,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "L4 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/L5.ctm',  function( geometry, material ){
@@ -226,7 +253,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "L5 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T1.ctm',  function( geometry, material ){
@@ -235,7 +262,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T1 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T2.ctm',  function( geometry, material ){
@@ -244,7 +271,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T2 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T3.ctm',  function( geometry, material ){
@@ -253,7 +280,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T3 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T4.ctm',  function( geometry, material ){
@@ -262,7 +289,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T4 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T5.ctm',  function( geometry, material ){
@@ -271,7 +298,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T5 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T6.ctm',  function( geometry, material ){
@@ -280,7 +307,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T6 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T7.ctm',  function( geometry, material ){
@@ -289,7 +316,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T7 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T8.ctm',  function( geometry, material ){
@@ -298,7 +325,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T8 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T9.ctm',  function( geometry, material ){
@@ -307,7 +334,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T9 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T10.ctm',  function( geometry, material ){
@@ -316,7 +343,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T10 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T11.ctm',  function( geometry, material ){
@@ -325,7 +352,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T11 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/T12.ctm',  function( geometry, material ){
@@ -334,7 +361,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "T12 Vertebra";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rL1.ctm',  function( geometry, material ){
@@ -343,7 +370,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "1st Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rL2.ctm',  function( geometry, material ){
@@ -352,7 +379,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "2nd Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rL3.ctm',  function( geometry, material ){
@@ -361,7 +388,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "3rd Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rL4.ctm',  function( geometry, material ){
@@ -370,7 +397,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "4th Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rL5.ctm',  function( geometry, material ){
@@ -379,7 +406,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "5th Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rL6-10.ctm',  function( geometry, material ){
@@ -388,7 +415,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "6th to 10th Ribs";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
 
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rR1.ctm',  function( geometry, material ){
@@ -397,7 +424,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "1st Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rR2.ctm',  function( geometry, material ){
@@ -406,7 +433,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "2nd Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rR3.ctm',  function( geometry, material ){
@@ -415,7 +442,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "3rd Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rR4.ctm',  function( geometry, material ){
@@ -424,7 +451,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "4th Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rR5.ctm',  function( geometry, material ){
@@ -433,7 +460,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "5th Rib";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/ribs/rR6-10.ctm',  function( geometry, material ){
@@ -442,7 +469,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "6th to 10th Ribs";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Left_Clavicle.ctm',  function( geometry, material ){
@@ -451,7 +478,9 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left Clavicle";
-    }, {} ); 
+
+        // this is awesome : controls.target.set( 550, 50, 100 );
+        mesh.userData = centroidCalculator(geometry);      },{}); 
 
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Left_Humerus.ctm',  function( geometry, material ){
@@ -460,7 +489,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left Humerus";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
 
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Left_Radius.ctm',  function( geometry, material ){
@@ -469,7 +498,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left Radius";
-    }, {} );     
+        mesh.userData = centroidCalculator(geometry);      },{});     
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Left_Ulna.ctm',  function( geometry, material ){
@@ -478,7 +507,17 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left Radius";
-    }, {} );       
+        mesh.userData = centroidCalculator(geometry);      },{});       
+ 
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Left_Scapula.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Left Scapula";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Right_Clavicle.ctm',  function( geometry, material ){
@@ -487,7 +526,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Right Clavicle";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
 
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Right_Humerus.ctm',  function( geometry, material ){
@@ -496,7 +535,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Right Humerus";
-    }, {} ); 
+        mesh.userData = centroidCalculator(geometry);      },{}); 
 
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Right_Radius.ctm',  function( geometry, material ){
@@ -505,7 +544,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Right Radius";
-    }, {} );     
+        mesh.userData = centroidCalculator(geometry);      },{});     
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Right_Ulna.ctm',  function( geometry, material ){
@@ -514,9 +553,16 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Right Radius";
-    }, {} );     
+        mesh.userData = centroidCalculator(geometry);      },{});     
     
-    
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/Right_Scapula.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Scapula";
+        mesh.userData = centroidCalculator(geometry);      },{});        
     
     
     
@@ -548,6 +594,9 @@ function init() {
     controls.minDistance = 50;
     controls.maxDistance = 1300;
     controls.dynamicDampingFactor = 1;
+
+
+        
 
     
 //skybox
@@ -592,10 +641,10 @@ function loadTexture( path ) {
     
     
 	// when the mouse moves, call the given function
-	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	document.addEventListener( 'dblclick', onDocumentMouseDoubleClick, false );
 }
 
-function onDocumentMouseMove( event ) 
+function onDocumentMouseDoubleClick( event ) 
 {
 	// the following line would stop any other event handler from firing
 	// (such as the mouse's TrackballControls)
@@ -648,9 +697,41 @@ function update()
                 INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
                 // set a new color for closest object
                 INTERSECTED.material.color.setHex( 0xf44336 );
-                
-                console.log(INTERSECTED.name);
-                
+                console.log(INTERSECTED.userData);
+                console.log(camera.quaternion);
+
+                // the cube    
+    		var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+			var cube = new THREE.Mesh( geometry );
+			scene.add( cube );
+            
+            controls.target = cube.position;
+            
+    
+                //TWEEN function
+                function moveObject( ) {
+                    TWEEN.removeAll();
+                    new TWEEN.Tween( cube.position )
+                    .to( { x: 400 }, 2000 )
+                    .easing( TWEEN.Easing.Elastic.InOut )
+                    .onUpdate( render )
+                    .start();   
+                };
+                //NON-STOP animation loop
+                function animation(){
+                    requestAnimationFrame(animate);  
+                    TWEEN.update();
+                }
+                //Render function
+                function render(){
+                    renderer.render(scene, camera);
+                }
+        //ADD EVENTS TO TWEEN
+            tween.onStart(function() { console.log("start") });
+            tween.onComplete(function() { console.log("complete") });
+		
+
+            
                 //replace
                 document.getElementById("heading").innerHTML= INTERSECTED.name;
                 document.getElementById("description").innerHTML= INTERSECTED.name;
@@ -670,7 +751,8 @@ function update()
 
 }
 
-//
+    
+
 
 function animate() {
     requestAnimationFrame( animate );
@@ -680,9 +762,11 @@ function animate() {
 }
 
 function render() {
-    camera.lookAt( scene.position );
+    //camera.lookAt( scene.position );
+    
     renderer.setClearColor( 0x212121, 1);
     renderer.render( scene, camera );
+
 
 }
 
