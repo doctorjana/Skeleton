@@ -22,6 +22,7 @@ body {
         left: 0;
         padding: 5px;
         overflow-y: auto;
+        background-color: #212121;
     }
     
     @media all and (orientation:portrait){
@@ -43,10 +44,9 @@ body {
     </head>
     <body><button id="hide-btn" class="btn btn-success btn-xs button-style">Hide Information</button>
           <a id="link" class="btn btn-info btn-xs jana-style">Doctor Jana</a>
-        <div class="information">
         
             
-        <div id="stuff">    
+        <div id="stuff" style="background-color:#42424; height:100%, width:100%" class="information">    
             <h3 id="heading" style="text-transform:uppercase">3d Skeleton</h3> 
             <div id="description">Click on a bone to view more information.
             Click and drag to rotate.
@@ -63,7 +63,7 @@ body {
             Powered by <a href="http://threejs.org/" target="_blank">three.js</a>.
             </div>
         </div>    
-    </div>
+
         <script src="view-source:http://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
         
         <script src="http://threejs.org/build/three.min.js"></script>
@@ -74,6 +74,7 @@ body {
         <script src="lzma.js"></script>
         <script type="text/javascript" src="TrackballControls.js"></script>
         <script src="Projector.js"></script>        
+        <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>        
 <script>
 var container;
 var controls;
@@ -878,14 +879,13 @@ function init() {
     renderer.setSize( window.innerWidth, window.innerHeight );
     container.appendChild( renderer.domElement );
 //controls
-    controls = new THREE.TrackballControls(camera, renderer.domElement);
-    controls.rotateSpeed = 0.4;
-    controls.noZoom = false;
-    controls.noPan = false;
-    controls.staticMoving = false;
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.rotateSpeed = 0.1;
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.1;
     controls.minDistance = 50;
     controls.maxDistance = 1300;
-    controls.dynamicDampingFactor = 0.2;
+  
 
 
         
@@ -911,7 +911,15 @@ function init() {
     mesh = new THREE.Mesh( new THREE.BoxGeometry(3000, 3000, 3000, 7, 7, 7 ), new THREE.MultiMaterial( materials ) );
     mesh.scale.x = - 1;
     scene.add( mesh );    
+			var space = function () {
+				requestAnimationFrame( space );
 
+				mesh.rotation.x += 0.0004;
+				mesh.rotation.y += 0.0001;
+
+			};
+
+			space();
 
 function loadTexture( path ) {
     var texture = new THREE.Texture( texture_placeholder );
