@@ -4,7 +4,8 @@
 		<meta charset=utf-8>
 <meta name="3d Skeleton" content="https://docjana.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cyborg/bootstrap.min.css" rel="stylesheet" type ="text/css">       
+
 <style type="text/css">
 body {
     background-color: #000;
@@ -14,9 +15,7 @@ body {
     width: 100%;
     color: #fff;
 }
-    a{
-        color: #FFEC9F;
-    }    
+
     
     .information{
         position: absolute;
@@ -27,20 +26,29 @@ body {
     
     @media all and (orientation:portrait){
         .information{bottom:0; width:96%; height: 60%}
+        .button-style{position: fixed;top:2px; left: 2px}
+        .jana-style{position: fixed;top:2px; right: 2px}
     }
     @media all and (orientation:landscape){
         .information{top:0; width:30%; height: 80%}
+        .button-style{position: fixed;bottom:2px; left: 2px}
+        .jana-style{position: fixed;bottom:2px; right: 2px}
     }
+    
     
 </style>
 
 
         
     </head>
-    <body>
-            <div class="information">
-        <h1 id="heading" style="text-transform:uppercase">3d Skeleton</h1>
-        <div id="description">Click on a bone to view more information.
+    <body><button id="hide-btn" class="btn btn-success btn-xs button-style">Hide Information</button>
+          <a id="link" class="btn btn-info btn-xs jana-style">Doctor Jana</a>
+        <div class="information">
+        
+            
+        <div id="stuff">    
+            <h3 id="heading" style="text-transform:uppercase">3d Skeleton</h3> 
+            <div id="description">Click on a bone to view more information.
             Click and drag to rotate.
             Use your scroll wheel to zoom in or out.
             If you are on a touch device, pinch to zoom and swipe to rotate.
@@ -53,7 +61,8 @@ body {
             This web experiment uses <a href="https://github.com/mrdoob/three.js/tree/master/examples/js/controls" target="_blank">Trackball controls</a>. Moderate experience is needed to navigate around(sorry for that!).
             <br><br>
             Powered by <a href="http://threejs.org/" target="_blank">three.js</a>.
-        </div>
+            </div>
+        </div>    
     </div>
         <script src="view-source:http://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
         
@@ -611,13 +620,13 @@ function init() {
     container.appendChild( renderer.domElement );
 //controls
     controls = new THREE.TrackballControls(camera, renderer.domElement);
-    controls.rotateSpeed = 0.8;
+    controls.rotateSpeed = 0.4;
     controls.noZoom = false;
     controls.noPan = false;
     controls.staticMoving = false;
     controls.minDistance = 50;
     controls.maxDistance = 1300;
-    controls.dynamicDampingFactor = 0.5;
+    controls.dynamicDampingFactor = 0.2;
 
 
         
@@ -910,7 +919,19 @@ function render() {
 
 }
 
+var button = document.getElementById('hide-btn');
 
+button.onclick = function() {
+    var div = document.getElementById('stuff');
+    if (div.style.display !== 'none') {
+        div.style.display = 'none';
+        button.innerHTML ="Show Information";
+    }
+    else {
+        div.style.display = 'block';
+        button.innerHTML ="Hide Information";
+    }
+};
 
 		</script>
 	</body>
