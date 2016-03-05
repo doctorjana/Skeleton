@@ -30,7 +30,8 @@ body {
 </style>
         <script src="view-source:http://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
         
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r74/three.min.js"></script>
+        <script src="http://threejs.org/build/three.min.js"></script>
+        <script src="http://threejs.org/examples/js/libs/tween.min.js"></script>
         <script src="OBJLoader.js"></script>
         <script src="ctm.js"></script>
         <script src="CTMLoader.js"></script>
@@ -88,9 +89,12 @@ function init() {
     scene = new THREE.Scene();
 
 
+            var geometry = new THREE.BoxGeometry( 0, 0, 0 );
+			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
     
-    
-    
+            window.cube = cube;
     
     
     
@@ -641,32 +645,20 @@ function loadTexture( path ) {
     
     
 	// when the mouse moves, call the given function
-	document.addEventListener( 'dblclick', onDocumentMouseDoubleClick, false );
+	document.addEventListener( 'click', onDocumentMouseMove, false );
 }
 
-function onDocumentMouseDoubleClick( event ) 
+function onDocumentMouseMove( event ) 
 {
 	// the following line would stop any other event handler from firing
 	// (such as the mouse's TrackballControls)
-	// event.preventDefault();
+	//event.preventDefault();
 	
 	// update the mouse variable
 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-}
-function onWindowResize() {
-
-
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize( window.innerWidth, window.innerHeight );
-
-}
-
-function update()
-{
-	// find intersections
+    
+    	// find intersections
 
 	// create a Ray with origin at the mouse position
 	//   and direction into the scene (camera direction)
@@ -698,39 +690,48 @@ function update()
                 // set a new color for closest object
                 INTERSECTED.material.color.setHex( 0xf44336 );
                 console.log(INTERSECTED.userData);
-                console.log(camera.quaternion);
+                
 
-                // the cube    
-    		var geometry = new THREE.BoxGeometry( 100, 100, 100 );
-			var cube = new THREE.Mesh( geometry );
-			scene.add( cube );
-            
-            controls.target = cube.position;
-            
-    
-                //TWEEN function
-                function moveObject( ) {
-                    TWEEN.removeAll();
-                    new TWEEN.Tween( cube.position )
-                    .to( { x: 400 }, 2000 )
-                    .easing( TWEEN.Easing.Elastic.InOut )
-                    .onUpdate( render )
-                    .start();   
+                
+
+  //tween          
+
+
+            if(INTERSECTED.userData.x){
+                var from = {
+                    x: cube.position.x,
+                    y: cube.position.y,
+                    z: cube.position.z
                 };
-                //NON-STOP animation loop
-                function animation(){
-                    requestAnimationFrame(animate);  
-                    TWEEN.update();
-                }
-                //Render function
-                function render(){
-                    renderer.render(scene, camera);
-                }
-        //ADD EVENTS TO TWEEN
-            tween.onStart(function() { console.log("start") });
-            tween.onComplete(function() { console.log("complete") });
-		
 
+                var to = {
+                    x: -INTERSECTED.userData.x,
+                    y: INTERSECTED.userData.y,
+                    z: INTERSECTED.userData.z
+                };
+                var tween = new TWEEN.Tween(from)
+                    .to(to, 2000)
+                    .easing(TWEEN.Easing.Linear.None)
+                    .onUpdate(function () {
+                    cube.position.set(this.x, this.y, this.z);
+
+                })
+                    .onComplete(function () {
+                    console.log("Finally")
+                })
+                    .start();
+  
+                var repeat = function () {
+                    TWEEN.update();
+                    requestAnimationFrame(repeat);
+
+                };
+
+                repeat();   
+            
+            }
+            
+            
             
                 //replace
                 document.getElementById("heading").innerHTML= INTERSECTED.name;
@@ -748,6 +749,20 @@ function update()
             INTERSECTED = null;
 
         }
+}
+function onWindowResize() {
+
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+function update()
+{
+
 
 }
 
@@ -762,7 +777,7 @@ function animate() {
 }
 
 function render() {
-    //camera.lookAt( scene.position );
+    camera.lookAt( cube.position );
     
     renderer.setClearColor( 0x212121, 1);
     renderer.render( scene, camera );
