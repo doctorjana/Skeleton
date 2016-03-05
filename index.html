@@ -136,9 +136,7 @@ function init() {
     
     
     
-    
-    
-    
+
     
    var ambient = new THREE.AmbientLight( 0x101030 );
     scene.add( ambient );
@@ -1142,11 +1140,38 @@ function init() {
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Distal Phalynx";
         mesh.userData = centroidCalculator(geometry);      },{});  
- //legs
+ 
+    
+ //sternum   
+     var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/Sternum.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Sternum";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //legs
     
     
     var loader = new THREE.CTMLoader();
-    loader.load( 'ctm/LeftOsInnominatum.ctm',  function( geometry, material ){
+    loader.load( 'ctm/LL/LeftOsInnominatum.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,     side: THREE.DoubleSide}),
     mesh = new THREE.Mesh( geometry, material );
@@ -1157,14 +1182,143 @@ function init() {
     
     //mirror mesh
      var loader = new THREE.CTMLoader();
-    loader.load( 'ctm/LeftOsInnominatum.ctm',  function( geometry, material ){
+    loader.load( 'ctm/LL/RightOsInnominatum.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,     side: THREE.DoubleSide}),
     mesh = new THREE.Mesh( geometry, material );
-    mesh.scale.x = -1;
     scene.add( mesh ); 
         mesh.name = "Right Os Innominatum";
         mesh.userData = centroidCalculator(geometry);      },{});  
+ 
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/RightFemur.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Right Femur";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+      var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/LeftFemur.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Femur";
+        mesh.userData = centroidCalculator(geometry);      },{});       
+    
+         var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/RightTibia.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Right Tibia";
+        mesh.userData = centroidCalculator(geometry);      },{});     
+  
+    
+      var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/LeftTibia.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Tibia";
+        mesh.userData = centroidCalculator(geometry);      },{});        
+    
+       var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/RightPatella.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Right Patella";
+        mesh.userData = centroidCalculator(geometry);      },{});       
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/LeftPatella.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Patella";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/Calcaneum.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Calcaneum";
+        mesh.userData = centroidCalculator(geometry);      },{}); 
+    
+    
+            var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/Talus.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Talus";
+        mesh.userData = centroidCalculator(geometry);      },{});  
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/Cuboid.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Cuboid";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/Navicular.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Navicular";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/MedialCuneiform.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Medial Cuneiform";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/LateralCuneiform.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Lateral Cuneiform";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/LL/ankle/IntermediateCuneiform.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); 
+    scene.add( mesh ); 
+        mesh.name = "Left Intermediate Cuneiform";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
