@@ -591,13 +591,13 @@ function init() {
     container.appendChild( renderer.domElement );
 //controls
         controls = new THREE.TrackballControls(camera, renderer.domElement);
-    controls.rotateSpeed = 0.4;
+    controls.rotateSpeed = 0.8;
     controls.noZoom = false;
     controls.noPan = false;
     controls.staticMoving = false;
     controls.minDistance = 50;
     controls.maxDistance = 1300;
-    controls.dynamicDampingFactor = 1;
+    controls.dynamicDampingFactor = 0.5;
 
 
         
