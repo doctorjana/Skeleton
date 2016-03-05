@@ -13,7 +13,6 @@ body {
     overflow: hidden;
     width: 100%;
     color: #fff;
-    text-align: justify;
 }
     a{
         color: #FFEC9F;
@@ -45,9 +44,14 @@ body {
             Click and drag to rotate.
             Use your scroll wheel to zoom in or out.
             If you are on a touch device, pinch to zoom and swipe to rotate.
-            
-            This web experiment uses <a href="https://github.com/mrdoob/three.js/tree/master/examples/js/controls" target="_blank">Trackball controls</a>. Moderate experience is needed to navigate around(sorry for that!).
             <br>
+            <br>
+            Click <a href="http://docjana.com">here</a> for detailed instructions.
+            
+            <br>
+            <br>
+            This web experiment uses <a href="https://github.com/mrdoob/three.js/tree/master/examples/js/controls" target="_blank">Trackball controls</a>. Moderate experience is needed to navigate around(sorry for that!).
+            <br><br>
             Powered by <a href="http://threejs.org/" target="_blank">three.js</a>.
         </div>
     </div>
@@ -668,7 +672,7 @@ function onDocumentMouseClick( event )
 {
 	// the following line would stop any other event handler from firing
 	// (such as the mouse's TrackballControls)
-	event.preventDefault();
+	//event.preventDefault();
 	
 	// update the mouse variable
 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
