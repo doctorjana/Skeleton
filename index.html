@@ -26,13 +26,13 @@ body {
     }
     
     @media all and (orientation:portrait){
-        .information{bottom:0; width:96%; height: 60%}
+        .information{bottom:0; width:98%; height: 60%}
         .button-style{position: fixed;top:2px; left: 2px}
         .jana-style{position: fixed;top:2px; right: 2px}
     }
     @media all and (orientation:landscape){
-        .information{top:0; width:30%; height: 80%}
-        .button-style{position: fixed;bottom:2px; left: 2px}
+        .information{top:0; width:30%; height: 100%}
+        .button-style{position: fixed;bottom:2px; left: 2px; z-index: 2}
         .jana-style{position: fixed;bottom:2px; right: 2px}
     }
     
@@ -47,20 +47,29 @@ body {
         
             
         <div id="stuff" style="background-color:#42424; height:100%, width:100%" class="information">    
-            <h3 id="heading" style="text-transform:uppercase">3d Skeleton</h3> 
-            <div id="description">Click on a bone to view more information.
-            Click and drag to rotate.
-            Use your scroll wheel to zoom in or out.
-            If you are on a touch device, pinch to zoom and swipe to rotate.
-            <br>
-            <br>
+            <h3 id="heading" style="text-transform:uppercase">Skele (BETA)</h3> 
+            <div id="description">
+                <h5>What is Skele(BETA)?</h5>
+                <p>Skele(BETA) is a browser based 3d viewer for the bones in the human body. Even though a few mobile default browsers cannot show WebGL, this program runs almost on all platforms, provided you have the right browser.<br>
+                Skele(BETA) uses <a href="http://openctm.sourceforge.net/">OpenCTM</a> format, which provides excellent compression, making it ideal for delivery across the net.
+                </p>
+                <h5>Controls:</h5>
+                <ul>               
+                    <li>Click/Tap on a bone to view more information.</li>
+                    <li>Click and drag with mouse to rotate. </li>
+                    <li>If you are on a touch device,swipe to orbit the model.</li>
+                    <li>Use your scroll wheel to zoom in or out.</li>
+                    <li>If you are on a touch device, pinch appropriately to zoom.</li>
+                </ul>
+
             Click <a href="http://docjana.com">here</a> for detailed instructions.
             
-            <br>
-            <br>
-            This web experiment uses <a href="https://github.com/mrdoob/three.js/tree/master/examples/js/controls" target="_blank">Trackball controls</a>. Moderate experience is needed to navigate around(sorry for that!).
+            
             <br><br>
             Powered by <a href="http://threejs.org/" target="_blank">three.js</a>.
+            Other beautiful resources used: <a href="http://www.createjs.com/tweenjs">Tween.js</a> and <a href="http://bootswatch.com/">BootSwatch</a>.
+            <br><br>
+            As you can see, it is still a work in progress, support me on <a href="http://www.patreon.com/jana">Patreon</a> for further updates. Requires Javascript and WebGL. If you cannot see anything, something is wrong with your browser, better switch to <a href="https://www.google.com/chrome/">Chrome</a> or <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>.
             </div>
         </div>    
 
@@ -72,7 +81,6 @@ body {
         <script src="ctm.js"></script>
         <script src="CTMLoader.js"></script>
         <script src="lzma.js"></script>
-        <script type="text/javascript" src="TrackballControls.js"></script>
         <script src="Projector.js"></script>        
         <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>        
 <script>
@@ -719,14 +727,7 @@ function init() {
         mesh.name = "Left 5th metacarpal";
         mesh.userData = centroidCalculator(geometry);      },{});  
    
-     var loader = new THREE.CTMLoader();
-    loader.load( 'ctm/UL/left/metacarpals/L5.ctm',  function( geometry, material ){
-    // create mesh and position it
-    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
-    mesh = new THREE.Mesh( geometry, material );
-    scene.add( mesh ); 
-        mesh.name = "Left 5th metacarpal";
-        mesh.userData = centroidCalculator(geometry);      },{});   
+
    
     
 //left phalanges
@@ -857,6 +858,280 @@ function init() {
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Distal Phalynx";
         mesh.userData = centroidCalculator(geometry);      },{});  
+    
+ //wrist bones - right   
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RCapitate.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Capitate";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RHamate.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Hamate";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RLunate.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Lunate";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RPisiform.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Pisiform";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+      var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RScaphoid.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Scaphoid";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RTrapezium.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Trazpezium";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RTrapezoid.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Trapezoid";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/RTriquetrum.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right Triquetrum";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/metacarpals/R1.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right 1st metacarpal";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+  var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/metacarpals/R2.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right 2nd metacarpal";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+   var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/metacarpals/R3.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right 3rd metacarpal";
+        mesh.userData = centroidCalculator(geometry);      },{});   
+    
+    
+   var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/metacarpals/R4.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right 4th metacarpal";
+        mesh.userData = centroidCalculator(geometry);      },{});   
+    
+    
+    var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/metacarpals/R5.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Right 5th metacarpal";
+        mesh.userData = centroidCalculator(geometry);      },{});  
+   
+   
+   
+    
+//right phalanges
+    
+      var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/1-1.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Pollex- Proximal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+      var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/1-2.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Pollex- Distal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+       var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/2-1.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Index- Proximal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});     
+    
+    
+          var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/2-2.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Index- Middle Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});  
+    
+         var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/2-3.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Index- Distal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});   
+    
+          var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/3-1.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Middle Finger- Proximal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});     
+    
+          var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/3-2.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Middle Finger- Middle Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});      
+    
+            var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/3-3.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Middle Finger- Distal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+             var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/4-1.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Ring Finger- Proximal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});   
+    
+              var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/4-2.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Ring Finger- Middle Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});  
+    
+        var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/4-3.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Ring Finger- Distal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});  
+      
+          var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/5-1.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Pinky Finger- Proximal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});    
+    
+            var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/5-2.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Pinky Finger- Middle Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});   
+    
+             var loader = new THREE.CTMLoader();
+    loader.load( 'ctm/UL/right/phalanges/5-3.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15 }),
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh ); 
+        mesh.name = "Pinky Finger- Distal Phalynx";
+        mesh.userData = centroidCalculator(geometry);      },{});  
+    
+    
+    
+    
     
     
     
@@ -1186,8 +1461,14 @@ function render() {
 
 }
 
+  
+    
+    
 var button = document.getElementById('hide-btn');
-
+if(window.innerHeight > window.innerWidth){
+   document.getElementById('stuff').style.display = "none";
+    button.innerHTML ="Show Information";
+}  
 button.onclick = function() {
     var div = document.getElementById('stuff');
     if (div.style.display !== 'none') {
