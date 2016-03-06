@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset=utf-8>
+<meta charset=utf-8>
 <meta name="3d Skeleton" content="https://docjana.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cyborg/bootstrap.min.css" rel="stylesheet" type ="text/css">       
-
+<title>Skele (BETA)</title>
 <style type="text/css">
 body {
     background-color: #000;
@@ -82,7 +82,8 @@ body {
         <script src="CTMLoader.js"></script>
         <script src="lzma.js"></script>
         <script src="Projector.js"></script>        
-        <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>        
+        <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>  
+        <script src="infoloader.js"></script>
 <script>
 var container;
 var controls;
@@ -583,7 +584,7 @@ function init() {
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/Right_Humerus.ctm',  function( geometry, material ){
 
-    var material = new THREE.MeshLambertMaterial({ color: 0xFFEC9F, shininess: 15, side: THREE.DoubleSide }),
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15, side: THREE.DoubleSide }),
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Right Humerus";
@@ -1716,6 +1717,14 @@ function init() {
         mesh.name = "5th Toe Distal Phalynx";
         mesh.userData = centroidCalculator(geometry);      },{});    
     
+   //teeth
+     loader.load( 'ctm/teeth.ctm',  function( geometry, material ){
+    // create mesh and position it
+    var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
+    mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
+    scene.add( mesh ); 
+        mesh.name = "Teeth";
+        mesh.userData = centroidCalculator(geometry);      },{});        
     
     
     
@@ -1850,7 +1859,7 @@ function onDocumentMouseClick( event )
                 INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
                 // set a new color for closest object
                 INTERSECTED.material.color.setHex( 0xf44336 );
-                console.log(INTERSECTED.userData);
+               
                 
 
                 
@@ -1878,7 +1887,7 @@ function onDocumentMouseClick( event )
 
                 })
                     .onComplete(function () {
-                    console.log("Finally")
+                    
                 })
                     .start();
   
@@ -1896,8 +1905,9 @@ function onDocumentMouseClick( event )
             
                 //replace
                 document.getElementById("heading").innerHTML= INTERSECTED.name;
-                document.getElementById("description").innerHTML= INTERSECTED.userData.name;
-                
+
+                document.getElementById("description").innerHTML= returnMyDesc(INTERSECTED.name.toLowerCase());
+               
             }
         } 
         else // there are no intersections
@@ -1911,111 +1921,8 @@ function onDocumentMouseClick( event )
 
         }
 }
-//hover feature
- function onDocumentMouseHover( event ) 
-{
-	// the following line would stop any other event handler from firing
-	// (such as the mouse's TrackballControls)
-	//event.preventDefault();
-	
-	// update the mouse variable
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-    
-    	// find intersections
-
-	// create a Ray with origin at the mouse position
-	//   and direction into the scene (camera direction)
-	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
-	vector.unproject( camera );
-	var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-	// create an array containing all objects in the scene with which the ray intersects
-	var intersects = ray.intersectObjects( scene.children );
-
-	// INTERSECTED = the object in the scene currently closest to the camera 
-	//		and intersected by the Ray projected from the mouse position 	
-	
-	// if there is one (or more) intersections
-	if ( intersects.length > 0 )
-	{
-		// if the closest object intersected is not the currently stored intersection object
-		if ( intersects[ 0 ].object != INTERSECTED ) 
-		{
-            
-		    // restore previous intersection object (if it exists) to its original color
-			if ( INTERSECTED ) 
-                
-				INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-			     // store reference to closest object as current intersection object
-                INTERSECTED = intersects[ 0 ].object;
-                // store color of closest object (for later restoration)
-                INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-                // set a new color for closest object
-                INTERSECTED.material.color.setHex( 0xf44336 );
-                console.log(INTERSECTED.userData);
-                
-
-                
-
-  //tween          
 
 
-            if(INTERSECTED.userData.x){
-                var from = {
-                    x: cube.position.x,
-                    y: cube.position.y,
-                    z: cube.position.z
-                };
-
-                var to = {
-                    x: -INTERSECTED.userData.x,
-                    y: INTERSECTED.userData.y,
-                    z: INTERSECTED.userData.z
-                };
-                var tween = new TWEEN.Tween(from)
-                    .to(to, 2000)
-                    .easing(TWEEN.Easing.Linear.None)
-                    .onUpdate(function () {
-                    cube.position.set(this.x, this.y, this.z);
-
-                })
-                    .onComplete(function () {
-                    console.log("Finally")
-                })
-                    .start();
-  
-                var repeat = function () {
-                    TWEEN.update();
-                    requestAnimationFrame(repeat);
-
-                };
-
-                repeat();   
-            
-            }
-            
-            
-            
-                //replace
-                document.getElementById("heading").innerHTML= INTERSECTED.name;
-                document.getElementById("description").innerHTML= INTERSECTED.userData.name;
-                
-            }
-        } 
-        else // there are no intersections
-        {
-            // restore previous intersection object (if it exists) to its original color
-            if ( INTERSECTED ) 
-                INTERSECTED.material.color.setHex( INTERSECTED.currentHex );
-            // remove previous intersection object reference
-            //     by setting current intersection object to "nothing"
-            INTERSECTED = null;
-
-        }
-}   
-    
-    
 function onWindowResize() {
 
 
@@ -2071,10 +1978,47 @@ button.onclick = function() {
     }
 };
            
-function returnDescription(myName){
-    
-}               
 
         </script>
+<style>
+    .ribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  right: -50px;
+  top: 40px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 10px #888;
+     -moz-box-shadow: 0 0 10px #888;
+          box-shadow: 0 0 10px #888;
+}
+.ribbon a {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 5px #444;
+}
+
+</style>
+<div class="ribbon">
+  <a href="#">Support me on patreon</a>
+</div>
+        
+        
+        
 	</body>
 </html>
