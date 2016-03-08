@@ -74,7 +74,7 @@ var WIKIPEDIA = function() {
         // format: 'application/x-json+ld'
         format: 'application/rdf+json'
       },
-      dataType: 'json',
+      dataType: 'jsonp',
       success: callback,
       error: error
     });
