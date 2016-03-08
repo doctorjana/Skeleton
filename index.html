@@ -709,7 +709,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left Triquetrum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Triquetral_bone";      },{});    
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/metacarpals/L1.ctm',  function( geometry, material ){
@@ -718,7 +718,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left 1st metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "First_metacarpal_bone";      },{});    
     
   var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/metacarpals/L2.ctm',  function( geometry, material ){
@@ -727,7 +727,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left 2nd metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Second_metacarpal_bone";      },{});    
     
    var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/metacarpals/L3.ctm',  function( geometry, material ){
@@ -736,7 +736,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left 3rd metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Third_metacarpal_bone";      },{});   
     
     
    var loader = new THREE.CTMLoader();
@@ -746,7 +746,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left 4th metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fourth_metacarpal_bone";      },{});   
     
     
     var loader = new THREE.CTMLoader();
@@ -756,7 +756,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Left 5th metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fifth_metacarpal_bone";      },{});  
    
 
    
@@ -770,7 +770,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pollex- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
       var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/1-2.ctm',  function( geometry, material ){
@@ -779,7 +779,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pollex- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});      
     
        var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/2-1.ctm',  function( geometry, material ){
@@ -788,7 +788,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Index- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
     
           var loader = new THREE.CTMLoader();
@@ -798,7 +798,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Index- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
     
          var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/2-3.ctm',  function( geometry, material ){
@@ -807,7 +807,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Index- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
           var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/3-1.ctm',  function( geometry, material ){
@@ -816,7 +816,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Middle Finger- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
           var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/3-2.ctm',  function( geometry, material ){
@@ -825,7 +825,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Middle Finger- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});      
     
             var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/3-3.ctm',  function( geometry, material ){
@@ -834,7 +834,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Middle Finger- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
              var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/4-1.ctm',  function( geometry, material ){
@@ -843,7 +843,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Ring Finger- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
               var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/4-2.ctm',  function( geometry, material ){
@@ -852,7 +852,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Ring Finger- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/4-3.ctm',  function( geometry, material ){
@@ -861,7 +861,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Ring Finger- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
       
           var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/5-1.ctm',  function( geometry, material ){
@@ -870,7 +870,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
             var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/5-2.ctm',  function( geometry, material ){
@@ -879,7 +879,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
              var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/5-3.ctm',  function( geometry, material ){
@@ -888,7 +888,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{}); 
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{}); 
 
     
     
@@ -916,7 +916,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Capitate";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Capitate_bone";      },{});    
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/LHamate.ctm',  function( geometry, material ){
@@ -925,7 +925,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Hamate";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Hamate_bone";      },{});    
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/LLunate.ctm',  function( geometry, material ){
@@ -934,7 +934,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Lunate";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Lunate_bone";      },{});    
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/LPisiform.ctm',  function( geometry, material ){
@@ -943,7 +943,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Pisiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Pisiform_bone";      },{});    
     
       var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/LScaphoid.ctm',  function( geometry, material ){
@@ -952,7 +952,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Scaphoid";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Scaphoid_bone";      },{});      
     
     
         var loader = new THREE.CTMLoader();
@@ -962,7 +962,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Trazpezium";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Trapezium_(bone)";      },{});    
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/LTrapezoid.ctm',  function( geometry, material ){
@@ -971,7 +971,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Trapezoid";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Trapezoid_bone";      },{});    
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/LTriquetrum.ctm',  function( geometry, material ){
@@ -980,7 +980,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Triquetrum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Triquetral_bone";      },{});    
     
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/metacarpals/L1.ctm',  function( geometry, material ){
@@ -989,7 +989,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right 1st metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "First_metacarpal_bone";      },{});    
     
   var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/metacarpals/L2.ctm',  function( geometry, material ){
@@ -998,7 +998,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right 2nd metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Second_metacarpal_bone";      },{});    
     
    var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/metacarpals/L3.ctm',  function( geometry, material ){
@@ -1007,7 +1007,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right 3rd metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Third_metacarpal_bone";      },{});   
     
     
    var loader = new THREE.CTMLoader();
@@ -1017,7 +1017,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right 4th metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fourth_metacarpal_bone";      },{});   
     
     
     var loader = new THREE.CTMLoader();
@@ -1027,7 +1027,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right 5th metacarpal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fifth_metacarpal_bone";      },{});  
    
 
    
@@ -1041,7 +1041,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pollex- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
       var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/1-2.ctm',  function( geometry, material ){
@@ -1050,7 +1050,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pollex- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});      
     
        var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/2-1.ctm',  function( geometry, material ){
@@ -1059,7 +1059,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Index- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
     
           var loader = new THREE.CTMLoader();
@@ -1069,7 +1069,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Index- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
     
          var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/2-3.ctm',  function( geometry, material ){
@@ -1078,7 +1078,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Index- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
           var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/3-1.ctm',  function( geometry, material ){
@@ -1087,7 +1087,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Middle Finger- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
           var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/3-2.ctm',  function( geometry, material ){
@@ -1096,7 +1096,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Middle Finger- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});      
     
             var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/3-3.ctm',  function( geometry, material ){
@@ -1105,7 +1105,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Middle Finger- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
              var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/4-1.ctm',  function( geometry, material ){
@@ -1114,7 +1114,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Ring Finger- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
               var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/4-2.ctm',  function( geometry, material ){
@@ -1123,7 +1123,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Ring Finger- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/4-3.ctm',  function( geometry, material ){
@@ -1132,7 +1132,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Ring Finger- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
       
           var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/5-1.ctm',  function( geometry, material ){
@@ -1141,7 +1141,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
             var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/5-2.ctm',  function( geometry, material ){
@@ -1150,7 +1150,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
              var loader = new THREE.CTMLoader();
     loader.load( 'ctm/UL/left/phalanges/5-3.ctm',  function( geometry, material ){
@@ -1159,7 +1159,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pinky Finger- Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
  
     
  //sternum   
@@ -1170,7 +1170,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Sternum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Sternum";      },{});    
     
     
     
@@ -1198,7 +1198,7 @@ function init() {
 
     scene.add( mesh ); 
         mesh.name = "Left Os Innominatum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Hip_bone";      },{});  
     
     //mirror mesh
      var loader = new THREE.CTMLoader();
@@ -1208,7 +1208,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Right Os Innominatum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Hip_bone";      },{});  
  
     var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/RightFemur.ctm',  function( geometry, material ){
@@ -1217,7 +1217,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Right Femur";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Femur";      },{});      
     
       var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/LeftFemur.ctm',  function( geometry, material ){
@@ -1226,7 +1226,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Femur";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});       
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Femur";      },{});       
     
          var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/RightTibia.ctm',  function( geometry, material ){
@@ -1235,7 +1235,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Right Tibia";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Tibia";      },{});     
   
     
       var loader = new THREE.CTMLoader();
@@ -1245,7 +1245,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Tibia";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});        
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Tibia";      },{});        
     
        var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/RightPatella.ctm',  function( geometry, material ){
@@ -1254,7 +1254,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Right Patella";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});       
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Patella";      },{});       
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/LeftPatella.ctm',  function( geometry, material ){
@@ -1263,7 +1263,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Patella";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Patella";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/Calcaneum.ctm',  function( geometry, material ){
@@ -1272,7 +1272,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Calcaneum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{}); 
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Calcaneus";      },{}); 
     
     
             var loader = new THREE.CTMLoader();
@@ -1282,7 +1282,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Talus";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Talus_bone";      },{});  
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/Cuboid.ctm',  function( geometry, material ){
@@ -1291,7 +1291,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Cuboid";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuboid_bone";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/Navicular.ctm',  function( geometry, material ){
@@ -1300,7 +1300,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Navicular";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Navicular_bone";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/MedialCuneiform.ctm',  function( geometry, material ){
@@ -1309,7 +1309,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Medial Cuneiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuneiform_bones";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/LateralCuneiform.ctm',  function( geometry, material ){
@@ -1318,7 +1318,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Lateral Cuneiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuneiform_bones";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/IntermediateCuneiform.ctm',  function( geometry, material ){
@@ -1327,7 +1327,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "Left Intermediate Cuneiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuneiform_bones";      },{});      
  
     
     
@@ -1345,7 +1345,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1); 
     scene.add( mesh ); 
         mesh.name = "Right Calcaneum";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{}); 
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Calcaneus";      },{}); 
     
     
             var loader = new THREE.CTMLoader();
@@ -1355,7 +1355,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );  geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Talus";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Talus_bone";      },{});  
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/Cuboid.ctm',  function( geometry, material ){
@@ -1364,7 +1364,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );  geometry.scale(-1,1,1); 
     scene.add( mesh ); 
         mesh.name = "Right Cuboid";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuboid_bone";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/Navicular.ctm',  function( geometry, material ){
@@ -1373,7 +1373,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );  geometry.scale(-1,1,1); 
     scene.add( mesh ); 
         mesh.name = "Right Navicular";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Navicular_bone";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/MedialCuneiform.ctm',  function( geometry, material ){
@@ -1382,7 +1382,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);  
     scene.add( mesh ); 
         mesh.name = "Right Medial Cuneiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuneiform_bones";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/LateralCuneiform.ctm',  function( geometry, material ){
@@ -1391,7 +1391,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );  geometry.scale(-1,1,1); 
     scene.add( mesh ); 
         mesh.name = "Right Lateral Cuneiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuneiform_bones";      },{});      
     
         var loader = new THREE.CTMLoader();
     loader.load( 'ctm/LL/ankle/IntermediateCuneiform.ctm',  function( geometry, material ){
@@ -1400,7 +1400,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );  geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Right Intermediate Cuneiform";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Cuneiform_bones";      },{});    
     
 
     
@@ -1422,7 +1422,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "1st Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "First_metatarsal_bone";      },{});      
         var loader = new THREE.CTMLoader();
     
     loader.load( 'ctm/LL/metatarsals/2.ctm',  function( geometry, material ){
@@ -1431,7 +1431,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "2nd Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Second_metatarsal_bone";      },{});    
     
     loader.load( 'ctm/LL/metatarsals/3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1439,7 +1439,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "3rd Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});        
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Third_metatarsal_bone";      },{});        
     
         loader.load( 'ctm/LL/metatarsals/4.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1447,7 +1447,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "4th Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fourth_metatarsal_bone";      },{});    
     
     
             loader.load( 'ctm/LL/metatarsals/5.ctm',  function( geometry, material ){
@@ -1456,7 +1456,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); 
     scene.add( mesh ); 
         mesh.name = "5th Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fifth_metatarsal_bone";      },{});   
   
     
 //reversed metatarsals
@@ -1470,7 +1470,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "1st Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "First_metatarsal_bone";      },{});      
         var loader = new THREE.CTMLoader();
     
     loader.load( 'ctm/LL/metatarsals/2.ctm',  function( geometry, material ){
@@ -1479,7 +1479,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "2nd Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Second_metatarsal_bone";      },{});    
     
     loader.load( 'ctm/LL/metatarsals/3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1487,7 +1487,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "3rd Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});        
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Third_metatarsal_bone";      },{});        
     
         loader.load( 'ctm/LL/metatarsals/4.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1495,7 +1495,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "4th Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fourth_metatarsal_bone";      },{});    
     
     
             loader.load( 'ctm/LL/metatarsals/5.ctm',  function( geometry, material ){
@@ -1504,7 +1504,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "5th Metatarsal";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Fifth_metatarsal_bone";      },{});   
     
 
     // Digits - left
@@ -1514,14 +1514,14 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pollex Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
        loader.load( 'ctm/LL/phalanges/1-2.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "Pollex Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
      loader.load( 'ctm/LL/phalanges/2-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1529,7 +1529,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "2nd Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
        loader.load( 'ctm/LL/phalanges/2-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1537,7 +1537,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "2nd Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});       
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});       
     
          loader.load( 'ctm/LL/phalanges/2-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1545,7 +1545,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "2nd Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
          loader.load( 'ctm/LL/phalanges/3-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1553,7 +1553,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "3rd Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
           loader.load( 'ctm/LL/phalanges/3-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1561,7 +1561,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "3rd Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
              loader.load( 'ctm/LL/phalanges/3-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1569,7 +1569,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "3rd Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
    
            loader.load( 'ctm/LL/phalanges/4-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1577,7 +1577,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "4th Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
              loader.load( 'ctm/LL/phalanges/4-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1585,7 +1585,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "4th Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});      
     
            loader.load( 'ctm/LL/phalanges/4-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1593,7 +1593,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "4th Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});        
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});        
     
            loader.load( 'ctm/LL/phalanges/5-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1601,7 +1601,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "5th Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});
     
                loader.load( 'ctm/LL/phalanges/5-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1609,7 +1609,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "5th Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
            loader.load( 'ctm/LL/phalanges/5-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1617,7 +1617,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material );
     scene.add( mesh ); 
         mesh.name = "5th Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
     
  //digits -right
@@ -1631,14 +1631,14 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pollex Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
        loader.load( 'ctm/LL/phalanges/1-2.ctm',  function( geometry, material ){
     // create mesh and position it
     var material = new THREE.MeshPhongMaterial({ color: 0xFFEC9F, shininess: 15,   side: THREE.DoubleSide }),
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Pollex Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});   
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});   
     
      loader.load( 'ctm/LL/phalanges/2-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1646,7 +1646,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "2nd Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
        loader.load( 'ctm/LL/phalanges/2-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1654,7 +1654,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "2nd Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});       
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});       
     
          loader.load( 'ctm/LL/phalanges/2-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1662,7 +1662,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "2nd Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
          loader.load( 'ctm/LL/phalanges/3-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1670,7 +1670,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "3rd Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
           loader.load( 'ctm/LL/phalanges/3-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1678,7 +1678,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "3rd Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});     
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});     
     
              loader.load( 'ctm/LL/phalanges/3-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1686,7 +1686,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "3rd Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});  
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});  
    
            loader.load( 'ctm/LL/phalanges/4-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1694,7 +1694,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "4th Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
              loader.load( 'ctm/LL/phalanges/4-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1702,7 +1702,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "4th Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});      
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});      
     
            loader.load( 'ctm/LL/phalanges/4-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1710,7 +1710,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "4th Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});        
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});        
     
            loader.load( 'ctm/LL/phalanges/5-1.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1718,7 +1718,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "5th Toe Proximal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});
     
                loader.load( 'ctm/LL/phalanges/5-2.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1726,7 +1726,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "5th Toe Middle Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
            loader.load( 'ctm/LL/phalanges/5-3.ctm',  function( geometry, material ){
     // create mesh and position it
@@ -1734,7 +1734,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "5th Toe Distal Phalynx";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});    
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Phalanx_bone";      },{});    
     
    //teeth
      loader.load( 'ctm/teeth.ctm',  function( geometry, material ){
@@ -1743,7 +1743,7 @@ function init() {
     mesh = new THREE.Mesh( geometry, material ); geometry.scale(-1,1,1);
     scene.add( mesh ); 
         mesh.name = "Teeth";
-        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Bone";      },{});        
+        mesh.userData = centroidCalculator(geometry);          mesh.userData.link = "Human_tooth";      },{});        
     
     
     
